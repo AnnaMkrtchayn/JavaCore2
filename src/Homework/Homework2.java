@@ -48,7 +48,7 @@ public class Homework2 {
                         for (int d = 1; d <= i; d++) {
                             System.out.print("* ");
                         }
-                        for (int l = 2; l <= i; l++) {
+                        for (int e = 2; e <= i; e++) {
                             System.out.print("* ");
                         }
                         System.out.println();
@@ -58,10 +58,10 @@ public class Homework2 {
                         for (int j = 1; j <= n - i; j++) {
                             System.out.print("  ");
                         }
-                        for (int k = 1; k <= i; k++) {
+                        for (int d = 1; d <= i; d++) {
                             System.out.print("* ");
                         }
-                        for (int l = 2; l <= i; l++) {
+                        for (int e = 2; e <= i; e++) {
                             System.out.print("* ");
                         }
                         System.out.println();
