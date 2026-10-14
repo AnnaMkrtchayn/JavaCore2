@@ -63,7 +63,7 @@ package homeworks;
                     oddCount++;
                 }
             }
-            System.out.println("Odd numbers count: " + oddCount);
+            System.out.println("Odd numbers count:  " + oddCount);
 
             // Խնդիր 9 – Հաշվել զանգվածի էլեմենտների գումարը
             int sum = 0;
