@@ -105,7 +105,7 @@ public class ArrayHomework {
         System.out.println("Second maximum: " + secondMax);
         System.out.println("-----------");
 
-        // Բոնուս 2 – Հեռացնել կրկնվող թվերը (տպել առանց կրկնությունների)
+        // Բոնուս 2 – Հեռացնել կրկնվող թվերը
         int[] bonus2 = {3, 6, 3, 8, 9, 6, 2, 3, 5, 6};
 
         System.out.print("Array without duplicates: ");
