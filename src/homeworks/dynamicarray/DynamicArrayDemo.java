@@ -12,30 +12,22 @@ public class DynamicArrayDemo {
         da.add(12);
         da.print();
 
-
-        // Թեստ 2 — Զանգվածի մեծացում (11-րդ և ավել տարրերի ավելացում առանց սխալի)
-
+        // Թեստ 2 — Զանգվածի մեծացում (11-րդ և ավել տարրերի ավելացում)
         DynamicArray da2 = new DynamicArray();
         for (int i = 1; i <= 15; i++) {
             da2.add(i * 5);
         }
         da2.print();
-        // Թեստ 3 — Կրկնակի մեծացում (25-ից ավելի տարրեր)
-        DynamicArray da3 = new DynamicArray();
-        for (int i = 1; i <= 27; i++) {
-            da3.add(i);
-        }
-        da3.print();
-        // Թեստ 4 — Ինդեքսով ստանալու ստուգում (getByIndex)
-        DynamicArray da4 = new DynamicArray();
-        da4.add(10);
-        da4.add(20);
-        da4.add(30);
 
-        System.out.println(da4.getByIndex(0));
-        System.out.println(da4.getByIndex(2));
-        System.out.println(da4.getByIndex(5));
-        System.out.println(da4.getByIndex(-1));
+        // Թեստ 3 — Ինդեքսով ստանալու ստուգում (
+        DynamicArray da3 = new DynamicArray();
+        da3.add(10);
+        da3.add(20);
+        da3.add(30);
+
+        System.out.println(da3.getByIndex(0));
+        System.out.println(da3.getByIndex(2));
+        System.out.println(da3.getByIndex(5));
+        System.out.println(da3.getByIndex(-1));
     }
 }
-
