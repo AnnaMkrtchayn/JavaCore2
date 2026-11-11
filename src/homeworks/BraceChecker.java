@@ -3,55 +3,50 @@ package homeworks;
 public class BraceChecker {
 
     private String text;
-    private int[] stck = new int[10];
-    private int tos;
 
     public BraceChecker(String text) {
         this.text = text;
-        tos = -1;
     }
 
-    void push(int item) {
-        stck[++tos] = item;
-    }
-
-    int pop() {
-        if (tos < 0) {
-            return -1;
-        } else {
-            return stck[tos--];
-        }
-    }
-
-
-    public boolean check() {
-        tos = -1;
+    public void check() {
+        Stack stack = new Stack();
+        boolean hasError = false;
 
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
 
             if (ch == '{' || ch == '[' || ch == '(') {
-                push(ch);
-
+                stack.push(i);
             } else if (ch == '}' || ch == ']' || ch == ')') {
-                int last = pop();
-
-                if (last == -1) {
-                    return false;
+                if (stack.isEmpty()) {
+                    System.out.println("Error: closed " + ch + " but not opened at " + i);
+                    hasError = true;
+                    return;
                 }
 
-                if ((ch == '}' && last != '{') ||
-                        (ch == ']' && last != '[') ||
-                        (ch == ')' && last != '(')) {
-                    return false;
+                int openIndex = stack.pop();
+                char openChar = text.charAt(openIndex);
+
+                if ((ch == '}' && openChar != '{') ||
+                        (ch == ']' && openChar != '[') ||
+                        (ch == ')' && openChar != '(')) {
+                    System.out.println("Error: opened " + openChar + " but closed " + ch + " at " + i);
+                    hasError = true;
+                    return;
                 }
             }
         }
 
-        if (tos == -1) {
-            return true;
-        } else {
-            return false;
+        if (!stack.isEmpty()) {
+            while (!stack.isEmpty()) {
+                int openIndex = stack.pop();
+                System.out.println("Error: opened " + text.charAt(openIndex) + " at " + openIndex + " but never closed");
+            }
+            hasError = true;
+        }
+
+        if (!hasError) {
+            System.out.println("Text is correct!");
         }
     }
 }
