@@ -121,7 +121,7 @@ public class EmployeeDemo {
                     String searchCompId = scanner.nextLine();
                     Company foundComp = companyStorage.getById(searchCompId);
                     if (foundComp != null) {
-                        System.out.println("Company found:\n" + foundComp);
+                        System.out.println("Company found:" + foundComp);
                     } else {
                         System.out.println("Company not found.");
                     }

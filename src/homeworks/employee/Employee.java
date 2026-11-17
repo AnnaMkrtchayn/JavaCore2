@@ -7,7 +7,7 @@ public class Employee {
     private String surname;
     private String employeeID;
     private double salary;
-    private Company company; // Изменено с String на Company
+    private Company company;
     private String position;
 
     public Employee() {
