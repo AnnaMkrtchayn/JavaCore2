@@ -5,6 +5,12 @@ public class EmployeeStorage {
     private int size = 0;
 
     public void add(Employee employee) {
+        for (int i = 0; i < size; i++) {
+            if (employees[i].getEmployeeID().equals(employee.getEmployeeID())) {
+                return;
+            }
+        }
+
         if (size == employees.length) {
             Employee[] temp = new Employee[employees.length + 5];
             for (int i = 0; i < employees.length; i++) {
@@ -27,7 +33,6 @@ public class EmployeeStorage {
         }
     }
 
-
     public Employee searchByID(String id) {
         for (int i = 0; i < size; i++) {
             if (employees[i].getEmployeeID().equalsIgnoreCase(id)) {
@@ -37,17 +42,32 @@ public class EmployeeStorage {
         return null;
     }
 
-    public void searchByCompany(String companyName) {
+    public void searchByCompanyName(String companyName) {
         boolean found = false;
         System.out.println("Employees:");
         for (int i = 0; i < size; i++) {
-            if (employees[i].getCompany().equalsIgnoreCase(companyName)) {
-                System.out.println(employees[i].getName() + " " + employees[i].getSurname() + " - " + employees[i].getPosition());
+            if (employees[i].getCompany() != null &&
+                    employees[i].getCompany().getName().equalsIgnoreCase(companyName)) {
+                System.out.println(employees[i].getEmployeeID() + " - " + employees[i].getName() + " " + employees[i].getSurname());
                 found = true;
             }
         }
         if (!found) {
-            System.out.println("No employees found for company " + companyName + ".");
+            System.out.println("No employees found for company name " + companyName + ".");
+        }
+    }
+
+    public void searchByCompanyId(String companyId) {
+        boolean found = false;
+        for (int i = 0; i < size; i++) {
+            if (employees[i].getCompany() != null &&
+                    employees[i].getCompany().getCompanyId().equalsIgnoreCase(companyId)) {
+                System.out.println(employees[i].getEmployeeID() + " - " + employees[i].getName() + " " + employees[i].getSurname());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No employees found for company ID " + companyId + ".");
         }
     }
 }
