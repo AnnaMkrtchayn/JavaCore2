@@ -4,10 +4,10 @@ public class CompanyStorage {
     private Company[] companies = new Company[10];
     private int size = 0;
 
-    public void add(Company company) {
+    public boolean add(Company company) {
         for (int i = 0; i < size; i++) {
-            if (companies[i].getCompanyId().equals(company.getCompanyId())) {
-                return;
+            if (companies[i].getCompanyId().equalsIgnoreCase(company.getCompanyId())) {
+                return false;
             }
         }
 
@@ -17,9 +17,14 @@ public class CompanyStorage {
             companies = temp;
         }
         companies[size++] = company;
+        return true;
     }
 
     public void printAll() {
+        if (size == 0) {
+            System.out.println("No companies found.");
+            return;
+        }
         for (int i = 0; i < size; i++) {
             System.out.println(companies[i].getCompanyId() + " - " + companies[i].getName() + " - " + companies[i].getCountry());
         }
@@ -27,7 +32,7 @@ public class CompanyStorage {
 
     public Company getById(String id) {
         for (int i = 0; i < size; i++) {
-            if (companies[i].getCompanyId().equals(id)) {
+            if (companies[i].getCompanyId().equalsIgnoreCase(id)) {
                 return companies[i];
             }
         }

@@ -4,21 +4,20 @@ public class EmployeeStorage {
     private Employee[] employees = new Employee[10];
     private int size = 0;
 
-    public void add(Employee employee) {
+    public boolean add(Employee employee) {
         for (int i = 0; i < size; i++) {
-            if (employees[i].getEmployeeID().equals(employee.getEmployeeID())) {
-                return;
+            if (employees[i].getEmployeeID().equalsIgnoreCase(employee.getEmployeeID())) {
+                return false;
             }
         }
 
         if (size == employees.length) {
             Employee[] temp = new Employee[employees.length + 5];
-            for (int i = 0; i < employees.length; i++) {
-                temp[i] = employees[i];
-            }
+            System.arraycopy(employees, 0, temp, 0, employees.length);
             employees = temp;
         }
         employees[size++] = employee;
+        return true;
     }
 
     public void printAll() {

@@ -73,11 +73,11 @@ public class Employee {
     @Override
     public String toString() {
         String compName = (company != null) ? company.getName() : "N/A";
-        return "Name: " + name + "\n" +
-                "Surname: " + surname + "\n" +
-                "Employee ID: " + employeeID + "\n" +
-                "Salary: " + (int) salary + "\n" +
-                "Company: " + compName + "\n" +
+        return "Name: " + name  +
+                "Surname: " + surname +
+                "Employee ID: " + employeeID  +
+                "Salary: " + salary +
+                "Company: " + compName +
                 "Position: " + position;
     }
 
@@ -86,11 +86,11 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(employeeID, employee.employeeID);
+        return employeeID != null && employeeID.equalsIgnoreCase(employee.employeeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(employeeID);
+        return employeeID != null ? employeeID.toLowerCase().hashCode() : 0;
     }
 }

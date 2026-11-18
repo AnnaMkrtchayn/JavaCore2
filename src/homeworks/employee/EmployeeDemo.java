@@ -62,8 +62,12 @@ public class EmployeeDemo {
                     Company company = companyStorage.getById(compId);
                     if (company != null) {
                         Employee emp = new Employee(name, surname, id, salary, company, position);
-                        employeeStorage.add(emp);
-                        System.out.println("Employee successfully added!");
+                        boolean added = employeeStorage.add(emp);
+                        if (added) {
+                            System.out.println("Employee successfully added!");
+                        } else {
+                            System.out.println("Error: Employee with ID " + id + " already exists!");
+                        }
                     } else {
                         System.out.println("Company with ID " + compId + " not found. Please add the company first.");
                     }
@@ -72,6 +76,7 @@ public class EmployeeDemo {
 
                 case 2:
                     employeeStorage.printAll();
+                    System.out.println();
                     break;
 
                 case 3:
@@ -105,8 +110,12 @@ public class EmployeeDemo {
                     String country = scanner.nextLine();
 
                     Company newComp = new Company(newCompId, newCompName, industry, country);
-                    companyStorage.add(newComp);
-                    System.out.println("Company successfully added!");
+                    boolean companyAdded = companyStorage.add(newComp);
+                    if (companyAdded) {
+                        System.out.println("Company successfully added!");
+                    } else {
+                        System.out.println("Error: Company with ID " + newCompId + " already exists!");
+                    }
                     System.out.println();
                     break;
 
